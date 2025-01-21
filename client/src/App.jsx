@@ -8,13 +8,13 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {isAuth && <NavBar />}
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Homepage />} />
         <Route path="/forgot" element={<Forgot />} />
-        <Route path="/chat" element={<Navigate to="/login" />} />
+        <Route path="/chat" element={isAuth ? <Homepage /> : <Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
   )
